@@ -1,0 +1,16 @@
+span {
+  color: blue;
+}
+
+.destacado {
+  font-weight: bold;
+  font-style: italic;
+  color: yellowgreen;
+  background-color: blueviolet;
+  padding: 10px;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
