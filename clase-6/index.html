@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input,
+    label,
+    select {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Formularios</h1>
+  <form>
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre">
+    <label for="lenguaje">Elige tu lenguaje favorito:</label>
+    <select id="lenguaje">
+      <option value="javascript" selected>Javascript</option>
+      <option value="c#">C#</option>
+      <option value="python">Python</option>
+    </select>
+    <label for="color">Elige tu color favorito:</label>
+    <input type="color" id="color">
+    <label for="fechaNacimiento">Fecha de nacimiento:</label>
+    <input type="date" id="fechaNacimiento">
+    <button>Enviar</button>
+  </form>
+
+  <script>
+    const $formulario = document.querySelector("form")
+    const $inputNombre = document.getElementById("nombre")
+    const $inputLenguaje = document.getElementById("lenguaje")
+    const $inputColor = document.getElementById("color")
+    const $inputNacimiento = document.getElementById("fechaNacimiento")
+    const $body = document.body
+
+    $formulario.addEventListener("submit", (evento) => {
+      evento.preventDefault()
+      const nombre = $inputNombre.value
+      const lenguaje = $inputLenguaje.value
+      const color = $inputColor.value
+      const nacimiento = $inputNacimiento.value
+
+      if (nombre.length < 3) {
+        alert("El nombre debería tener al menos 3 letras")
+        return
+      }
+
+      if (nombre.length > 15) {
+        alert("El nombre no debería tener más de 15 letras")
+        return
+      }
+
+      const $container = document.createElement("div")
+      $container.style.width = "200px"
+      $container.style.height = "200px"
+      $container.style.padding = "20px"
+      $container.style.display = "flex"
+      $container.style.flexDirection = "column"
+      $container.style.justifyContent = "center"
+      $container.style.alignItems = "center"
+      $container.style.textAlign = "center"
+      $container.style.backgroundColor = color
+
+      const $saludo = document.createElement("h3")
+      $saludo.textContent = `Soy ${nombre}`
+      $container.appendChild($saludo)
+
+      const $lenguajeParrafo = document.createElement("p")
+      $lenguajeParrafo.textContent = `Mi lenguaje favorito es: ${lenguaje.toUpperCase()}.`
+      $container.appendChild($lenguajeParrafo)
+
+      const $nacimientoParrafo = document.createElement("p")
+      $nacimientoParrafo.textContent = `Naci el día: ${nacimiento}`
+      $container.appendChild($nacimientoParrafo)
+
+      $body.appendChild($container)
+
+      $formulario.reset()
+    })
+  </script>
+</body>
+
+</html>
